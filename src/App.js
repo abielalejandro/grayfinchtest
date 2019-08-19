@@ -12,8 +12,7 @@ class App extends Component {
     data: [],
     selected: [],
     showOptions: true,
-    ready: false,
-    i: 0
+    ready: false
   };
 
   componentDidMount() {
@@ -21,7 +20,7 @@ class App extends Component {
   }
 
   search = (option) => {
-    let {i,selected} = this.state;
+    let {selected} = this.state;
     
     if (selected.length===DEFAULT_OPTIONS.length) return;
 
@@ -34,8 +33,7 @@ class App extends Component {
     })
     .then(r=> r.json())
     .then(resp => {
-      i=i+1;
-      this.setState({data:resp.data,i});
+      this.setState({data:resp.data});
     })
     .catch((err) => {
         console.error(err);
@@ -43,10 +41,11 @@ class App extends Component {
   }
 
   onSelect = (item) => {
-    const {selected,  i } = this.state;
+    const {selected } = this.state;
     if (selected.length===DEFAULT_OPTIONS.length) return;
-
+    
     selected.push(item);
+    const i = (selected.length);
     this.setState(
         {
           selected, 
