@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { tsPropertySignature } from '@babel/types';
 
 const LIMIT=5;
 const API_KEY='DWqOzKWHqkTgfBgVVSISjAXk7LOSXfga';
@@ -39,6 +38,7 @@ class App extends Component {
       this.setState({data:resp.data,i});
     })
     .catch((err) => {
+        console.error(err);
     });
   }
 
