@@ -44,11 +44,10 @@ class App extends Component {
     const {selected } = this.state;
     if (selected.length===DEFAULT_OPTIONS.length) return;
     
-    selected.push(item);
     const i = (selected.length);
     this.setState(
         {
-          selected, 
+          selected: selected.concat(item) , 
           showOptions:(selected.length<DEFAULT_OPTIONS.length),
           ready:(selected.length===DEFAULT_OPTIONS.length)
         });
